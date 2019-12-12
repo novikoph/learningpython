@@ -1,5 +1,6 @@
-import math
-import random
+# import math
+# import random
+import re
 
 # Числа
 # print(123 + 222)                    # Целочисленное сложение
@@ -81,7 +82,7 @@ import random
 # S = 'A\nB\tC'           # \n - конец строки, \t - табуляция
 # print(S)
 # print(len(S))           # Как \n, так и \t являются одним символом
-# print(ord('\n'))        # \n - один символ, кодируемый какдесятичное значение 10
+# print(ord('\n'))        # \n - один символ, кодируемый как десятичное значение 10
 # S = 'A\0B\0C'           # \0, байт с двоичными нулями, не завершает строку
 # print(len(S))
 # print(S)                # Непечатаемые символы отображаются как шестнадцатеричные управляющие последовательности \xNN
@@ -94,11 +95,19 @@ import random
 
 
 # Строки Unicode
-print('sp\xc4m')                # Python 3.X: обычные строки str являются текстом Unicode
-print(b'a\x01c')                # Строки bytes - это данные, основанные на байтах
-print(u'sp\u00c4m')             # Литералы Unicode из Python 2.X работают в Python 3.3+: просто строка str
-print('spam')                   # Символы могут занимать 1, 2 или 4 байта в памяти
-print('spam'.encode('utf8'))    # В UTF-8 кодируется как 4 байта в файлах
-print('spam'.encode('utf16'))   # Но в UTF-16 кодируется как 10 байт
-print('sp\xc4\u00c4\U000000c4m')
-print(u'sp\xc4\u00c4\U000000c4m')
+# print('sp\xc4m')                # Python 3.X: обычные строки str являются текстом Unicode
+# print(b'a\x01c')                # Строки bytes - это данные, основанные на байтах
+# print(u'sp\u00c4m')             # Литералы Unicode из Python 2.X работают в Python 3.3+: просто строка str
+# print('spam')                   # Символы могут занимать 1, 2 или 4 байта в памяти
+# print('spam'.encode('utf8'))    # В UTF-8 кодируется как 4 байта в файлах
+# print('spam'.encode('utf16'))   # Но в UTF-16 кодируется как 10 байт
+# print('sp\xc4\u00c4\U000000c4m')
+# print(u'sp\xc4\u00c4\U000000c4m')
+
+
+# Сопоставление с образцом
+match = re.match('Hello[\t]*(.*)world', 'Hello      Python world')
+print(match.group(1))
+match = re.match('[/:](.*)[/:](.*)[/:](.*)', '/usr/home:lumberjack')
+print(match.groups())
+print(re.split('[/:]', 'usr/home/lumberjack'))
