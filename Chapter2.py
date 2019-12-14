@@ -106,8 +106,67 @@ import re
 
 
 # Сопоставление с образцом
-match = re.match('Hello[\t]*(.*)world', 'Hello      Python world')
-print(match.group(1))
-match = re.match('[/:](.*)[/:](.*)[/:](.*)', '/usr/home:lumberjack')
-print(match.groups())
-print(re.split('[/:]', 'usr/home/lumberjack'))
+# match = re.match('Hello[\t]*(.*)world', 'Hello      Python world')
+# print(match.group(1))
+# match = re.match('[/:](.*)[/:](.*)[/:](.*)', '/usr/home:lumberjack')
+# print(match.groups())
+# print(re.split('[/:]', 'usr/home/lumberjack'))
+
+
+# Списки
+# Операции над последовательностями
+L = [123, 'spam', 1.23]             # Список из трех объектов разных типов
+print(len(L))                       # Количество элементов в списке
+print(L[0])                         # Индексация по позиции
+print(L[:-1])                       # Нарезание списка возвращает новый список
+print(L + [4, 5, 6])                # Конкатенация и повторение также создают новый список
+print(L * 2)
+print(L)                            # Исходный список не изменился
+
+
+# Операции, специфичные для типа
+L.append('NI')                      # Увеличение: добавление объекта в конец списка
+print(L)
+L.pop(2)                            # Уменьшение: удаление элемента из середины
+print(L)                            # del L[2] также выполняет удаление из списка
+M = ['bb', 'aa', 'cc']
+M.sort()
+print(M)
+M.reverse()
+print(M)                            # В обоих случаях методы модифицируют список напрямую
+
+
+# Контроль границ
+# print(L[99])
+# L[99] = 1                         # Индексация и присваивание за концом списка всегда считается ошибкой
+
+
+# Вложение
+M = [[1, 2, 3],                     # Матрица 3 х 3 в виде вложенных списков
+     [4, 5, 6],                     # При использовании квадратных скобок код
+     [7, 8, 9]]                     # может занимать несколько строк
+print(M)
+print(M[1])                         # Получить строку 2
+print(M[1][2])                      # Получить строку 2 и затем элемент 3 внутри этой строки
+
+
+# Списковые ключения
+col2 = [row[1] for row in M]        # Собрать элементы в столбце 2
+print(col2)
+print(M)                            # Матрица не изменилась
+col = [row[1] + 1 for row in M]     # Добавить 1 в каждом элементе в столбце 2
+print(col)
+col = [row[1] for row in M if row[1] % 2 == 0]      # Отфильстровать нечетные элементы
+print(col)
+diag = [M[i][i] for i in [0, 1, 2]]                 # Собрать диагональ из матрицы
+print(diag)
+doubles = [c * 2 for c in 'spam']                   # Повторить символы в строке
+print(doubles)
+print(list(range(4)))
+print(list(range(-6, 7, 2)))
+print([[x ** 2, x ** 3] for x in range(4)])         # Множество значений, фильтры if
+print([[x, x / 2, x * 2] for x in range(-6, 7, 2) if x > 0])
+G = (sum(row) for row in M)         # Создать генератор сумм элементов в строках
+print(next(G))
+print(next(G))                      # Запустить протокол итерации next()
+print(next(G))
