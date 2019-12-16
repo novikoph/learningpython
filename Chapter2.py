@@ -1,6 +1,7 @@
 # import math
 # import random
-import re
+# import re
+import struct
 
 # Числа
 # print(123 + 222)                    # Целочисленное сложение
@@ -277,3 +278,61 @@ import re
 # print(T[1])
 # print(T[2][1])
 # T.append(4)
+
+
+# Файлы
+# f = open('data.txt', 'w')           # Создать новый файл в режиме записи ('w')
+# print(f.write('Hello\n'))           # Записать в него строки символов
+# print(f.write('world\n'))           # Возвратить количество записанных символов
+# f.close()                           # Закрыть для сбрасывания буферов вывода на диск
+#
+# f = open('data.txt')                # 'r' (чтение) - стандартный режим обработки
+# text = f.read()                     # Прочитать все содержимое файла в строку
+# print(text)
+# print(text.split())                 # Содержимое файла - всегда строка
+#
+# for line in open('data.txt'): print(line)
+#
+# print(dir(f))
+# print(help(f.seek))
+
+
+# Файлы с двоичными байтами
+# packed = struct.pack('>i4sh', 7, b'spam', 8)            # Создать упакованные двоичные данные
+# print(packed)                                           # 10 байт, не объекты и не текст
+#
+# file = open('data.bin', 'wb')                           # Открыть двоичный файл для записи
+# print(file.write(packed))                               # Записать упакованные двоичные данные
+# file.close()
+#
+# data = open('data.bin', 'rb').read()                    # Открыть/прочитать двоичный файл данных
+# print(data)                                             # 10 байт, неизмененные
+# print(data[4:8])                                        # Нарезать байты в середине
+# print(list(data))                                       # Последовательность 8-битных байт
+# print(struct.unpack('>i4sh', data))                     # Снова распаковать в объекты
+
+
+# Файлы с текстом Unicode
+S = 'sp\xc4m'                       # Текст Unicode, отличающийся от ASCII
+print(S)
+print(S[2])                         # Последовательность символов
+
+file = open('unidata.txt', 'w', encoding='utf-8')       # Записать/закодировать текст UTF-8
+print(file.write(S))                # Записано 4 символа
+file.close()
+
+text = open('unidata.txt', encoding='utf-8').read()     # Прочитать/декодировать текст UTF-8
+print(text)
+print(len(text))                    # 4 символ (кодовые строчки)
+
+raw = open('unidata.txt', 'rb').read()                  # Читать закодированные байты
+print(raw)
+print(len(raw))
+
+print(text.encode('utf-8'))         # Вручную кодировать в байты
+print(raw.decode('utf-8'))          # Вручную декодировать в строку
+
+print(text.encode('latin-1'))       # Байты отличаются от других
+print(text.encode('utf-16'))
+print(len(text.encode('latin-1')), len(text.encode('utf-16')))
+print(b'\xff\xfes\x00p\x00\xc4\x00m\x00'.decode('utf-16'))      # Но декодируются в ту же смаую строку
