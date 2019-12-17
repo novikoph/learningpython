@@ -2,6 +2,8 @@
 # import random
 # import re
 import struct
+import decimal
+from fractions import Fraction
 
 # Числа
 # print(123 + 222)                    # Целочисленное сложение
@@ -313,26 +315,76 @@ import struct
 
 
 # Файлы с текстом Unicode
-S = 'sp\xc4m'                       # Текст Unicode, отличающийся от ASCII
-print(S)
-print(S[2])                         # Последовательность символов
+# S = 'sp\xc4m'                       # Текст Unicode, отличающийся от ASCII
+# print(S)
+# print(S[2])                         # Последовательность символов
+#
+# file = open('unidata.txt', 'w', encoding='utf-8')       # Записать/закодировать текст UTF-8
+# print(file.write(S))                # Записано 4 символа
+# file.close()
+#
+# text = open('unidata.txt', encoding='utf-8').read()     # Прочитать/декодировать текст UTF-8
+# print(text)
+# print(len(text))                    # 4 символ (кодовые строчки)
+#
+# raw = open('unidata.txt', 'rb').read()                  # Читать закодированные байты
+# print(raw)
+# print(len(raw))
+#
+# print(text.encode('utf-8'))         # Вручную кодировать в байты
+# print(raw.decode('utf-8'))          # Вручную декодировать в строку
+#
+# print(text.encode('latin-1'))       # Байты отличаются от других
+# print(text.encode('utf-16'))
+# print(len(text.encode('latin-1')), len(text.encode('utf-16')))
+# print(b'\xff\xfes\x00p\x00\xc4\x00m\x00'.decode('utf-16'))      # Но декодируются в ту же смаую строку
 
-file = open('unidata.txt', 'w', encoding='utf-8')       # Записать/закодировать текст UTF-8
-print(file.write(S))                # Записано 4 символа
-file.close()
 
-text = open('unidata.txt', encoding='utf-8').read()     # Прочитать/декодировать текст UTF-8
-print(text)
-print(len(text))                    # 4 символ (кодовые строчки)
+# Прочие основные типы
+X = set('spam')                 # Создать множество из последовательности
+Y = {'h', 'a', 'm'}             # Создать множество с помощью литералов
 
-raw = open('unidata.txt', 'rb').read()                  # Читать закодированные байты
-print(raw)
-print(len(raw))
+print(X, Y)                     # Кортеж из двух множеств без круглых скобок
+print(X & Y)                    # Пересечение
+print(X | Y)                    # Объединение
+print(X - Y)                    # Разность
+print(X > Y)                    # Надмножество
+print({n ** 2 for n in [1, 2, 3, 4]})           # Включение множеств в Python 3.X, 2.7
 
-print(text.encode('utf-8'))         # Вручную кодировать в байты
-print(raw.decode('utf-8'))          # Вручную декодировать в строку
+print(list(set([1, 2, 1, 3, 1])))               # Фильстрация дубликатов (возможно неупорядоченных)
+print(set('spam') - set('ham'))                 # Нахождение разностей в коллекции
+print(set('spam') == set('aspm'))               # Нейтральная к порядку проверка равенства
 
-print(text.encode('latin-1'))       # Байты отличаются от других
-print(text.encode('utf-16'))
-print(len(text.encode('latin-1')), len(text.encode('utf-16')))
-print(b'\xff\xfes\x00p\x00\xc4\x00m\x00'.decode('utf-16'))      # Но декодируются в ту же смаую строку
+print('p' in set('spam'), 'p' in 'spam', 'ham' in ['eggs', 'ham', 'spam'])
+
+print(1/3)                      # Математика с плавающей точкой
+print(2/3 + 1/2)
+
+d = decimal.Decimal('3.141')
+print(d + 1)
+
+decimal.getcontext().prec = 2
+print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
+
+f = Fraction(2, 3)              # Дроби: числитель + знаменатель
+print(f + 1)
+print(f + Fraction(1, 2))
+
+print(1 > 2, 1 < 2)             # Булевые значения
+print(bool('spam'))             # Булевое значение объекта
+X = None                        # Заполнитель None
+print(X)
+L = [None] * 100
+print(L)                        # Инициализировать список сотней объектов None
+
+print(type(L))                  # Типы являются классами и наоборот
+print(type(type(L)))
+
+if type(L) == type([]):         # Проверка типа при необходимости
+    print('yes')
+
+if type(L) == list:             # Использование имени типа
+    print('yes')
+
+if isinstance(L, list):         # Объекто-ориентированная проверка
+    print('yes')
