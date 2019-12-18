@@ -341,50 +341,69 @@ from fractions import Fraction
 
 
 # Прочие основные типы
-X = set('spam')                 # Создать множество из последовательности
-Y = {'h', 'a', 'm'}             # Создать множество с помощью литералов
+# X = set('spam')                 # Создать множество из последовательности
+# Y = {'h', 'a', 'm'}             # Создать множество с помощью литералов
+#
+# print(X, Y)                     # Кортеж из двух множеств без круглых скобок
+# print(X & Y)                    # Пересечение
+# print(X | Y)                    # Объединение
+# print(X - Y)                    # Разность
+# print(X > Y)                    # Надмножество
+# print({n ** 2 for n in [1, 2, 3, 4]})           # Включение множеств в Python 3.X, 2.7
+#
+# print(list(set([1, 2, 1, 3, 1])))               # Фильстрация дубликатов (возможно неупорядоченных)
+# print(set('spam') - set('ham'))                 # Нахождение разностей в коллекции
+# print(set('spam') == set('aspm'))               # Нейтральная к порядку проверка равенства
+#
+# print('p' in set('spam'), 'p' in 'spam', 'ham' in ['eggs', 'ham', 'spam'])
+#
+# print(1/3)                      # Математика с плавающей точкой
+# print(2/3 + 1/2)
+#
+# d = decimal.Decimal('3.141')
+# print(d + 1)
+#
+# decimal.getcontext().prec = 2
+# print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
+#
+# f = Fraction(2, 3)              # Дроби: числитель + знаменатель
+# print(f + 1)
+# print(f + Fraction(1, 2))
+#
+# print(1 > 2, 1 < 2)             # Булевые значения
+# print(bool('spam'))             # Булевое значение объекта
+# X = None                        # Заполнитель None
+# print(X)
+# L = [None] * 100
+# print(L)                        # Инициализировать список сотней объектов None
+#
+# print(type(L))                  # Типы являются классами и наоборот
+# print(type(type(L)))
+#
+# if type(L) == type([]):         # Проверка типа при необходимости
+#     print('yes')
+#
+# if type(L) == list:             # Использование имени типа
+#     print('yes')
+#
+# if isinstance(L, list):         # Объекто-ориентированная проверка
+#     print('yes')
 
-print(X, Y)                     # Кортеж из двух множеств без круглых скобок
-print(X & Y)                    # Пересечение
-print(X | Y)                    # Объединение
-print(X - Y)                    # Разность
-print(X > Y)                    # Надмножество
-print({n ** 2 for n in [1, 2, 3, 4]})           # Включение множеств в Python 3.X, 2.7
 
-print(list(set([1, 2, 1, 3, 1])))               # Фильстрация дубликатов (возможно неупорядоченных)
-print(set('spam') - set('ham'))                 # Нахождение разностей в коллекции
-print(set('spam') == set('aspm'))               # Нейтральная к порядку проверка равенства
+# Классы, определяемые пользователем
+class Worker:
+    def __init__(self, name, pay):          # Инициализировать при создании self - новый объект
+        self.name = name
+        self.pay = pay
+    def lastName(self):
+        return self.name.split()[-1]        # Разбить строку по пробелам
+    def giveRaise(self, percent):
+        self.pay *= (1.0 + percent)         # Обновить pay на месте
 
-print('p' in set('spam'), 'p' in 'spam', 'ham' in ['eggs', 'ham', 'spam'])
+bob = Worker('Bob Smith', 50000)            # Создать два экземпляра класса
+sue = Worker('Sue Jones', 60000)            # Каждый имеет name и pay
 
-print(1/3)                      # Математика с плавающей точкой
-print(2/3 + 1/2)
-
-d = decimal.Decimal('3.141')
-print(d + 1)
-
-decimal.getcontext().prec = 2
-print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
-
-f = Fraction(2, 3)              # Дроби: числитель + знаменатель
-print(f + 1)
-print(f + Fraction(1, 2))
-
-print(1 > 2, 1 < 2)             # Булевые значения
-print(bool('spam'))             # Булевое значение объекта
-X = None                        # Заполнитель None
-print(X)
-L = [None] * 100
-print(L)                        # Инициализировать список сотней объектов None
-
-print(type(L))                  # Типы являются классами и наоборот
-print(type(type(L)))
-
-if type(L) == type([]):         # Проверка типа при необходимости
-    print('yes')
-
-if type(L) == list:             # Использование имени типа
-    print('yes')
-
-if isinstance(L, list):         # Объекто-ориентированная проверка
-    print('yes')
+print(bob.lastName())                       # Вызвать метод: bob - это self
+print(sue.lastName())                       # sue - это self
+sue.giveRaise(.10)                          # Обновить атрибут pay в экземпляре sue
+print(sue.pay)
