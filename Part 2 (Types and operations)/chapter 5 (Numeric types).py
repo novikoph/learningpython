@@ -1,5 +1,7 @@
-import math
-import random
+# import math
+# import random
+from decimal import Decimal
+import decimal
 
 # Разнородные типы преобразуются
 # print(3.14 + 40)                # Преобразование целого в число с плавающей точкой
@@ -144,26 +146,50 @@ import random
 
 
 # Другие встроенные инструменты для обработки чисел
-print(math.pi, math.e)                      # Общие константы
-print(math.sin(2 * math.pi / 180))          # Синус, тангенс, косинус
-print(math.sqrt(144), math.sqrt(2))         # Квадратный корень
-print(math.pow(2, 4), 2 ** 4, 2.0 ** 4.0)   # Возведение в степень
-print(abs(-42), sum((1, 2, 3, 4)))          # Абсолютное значение, суммирование
-print(min(1, 3, 2, 4), max(1 ,3, 2, 4))     # Минимум, максимум
+# print(math.pi, math.e)                      # Общие константы
+# print(math.sin(2 * math.pi / 180))          # Синус, тангенс, косинус
+# print(math.sqrt(144), math.sqrt(2))         # Квадратный корень
+# print(math.pow(2, 4), 2 ** 4, 2.0 ** 4.0)   # Возведение в степень
+# print(abs(-42), sum((1, 2, 3, 4)))          # Абсолютное значение, суммирование
+# print(min(1, 3, 2, 4), max(1 ,3, 2, 4))     # Минимум, максимум
+#
+# print(math.floor(2.567), math.floor(-2.567))            # Округление в меньшую сторону (до меньшего целого)
+# print(math.trunc(2.567), math.trunc(-2.567))            # Усечение (отбрасывание десятичной части)
+# print(int(2.567), int(-2.567))                          # Усечение (преобразование в целое число)
+# print(round(2.567), round(2.456), round(2.576, 2))      # Округление
+# print('%.1f' % 2.567, '{0:.2f}'.format(2.567))          # Округление для отображения
+#
+# print(random.random())              # Случайные числа с плавающей точкой, целые, выбор, тасование
+# print(random.randint(1, 10))
+# print(random.randint(1, 10))
+#
+# print(random.choice(['Sasha', 'Marina', 'Eva']))
+# print(random.choice(['Sasha', 'Marina', 'Eva']))
+#
+# suits = ['hearts', 'clubs', 'diamonds', 'spades']
+# random.shuffle(suits)
+# print(suits)
 
-print(math.floor(2.567), math.floor(-2.567))            # Округление в меньшую сторону (до меньшего целого)
-print(math.trunc(2.567), math.trunc(-2.567))            # Усечение (отбрасывание десятичной части)
-print(int(2.567), int(-2.567))                          # Усечение (преобразование в целое число)
-print(round(2.567), round(2.456), round(2.576, 2))      # Округление
-print('%.1f' % 2.567, '{0:.2f}'.format(2.567))          # Округление для отображения
 
-print(random.random())              # Случайные числа с плавающей точкой, целые, выбор, тасование
-print(random.randint(1, 10))
-print(random.randint(1, 10))
+# Другие числовые типы
+# Основы десятичных чисел
+print(0.1 + 0.1 + 0.1 - 0.3)
 
-print(random.choice(['Sasha', 'Marina', 'Eva']))
-print(random.choice(['Sasha', 'Marina', 'Eva']))
+print(Decimal('0.1') + Decimal('0.1') + Decimal('0.1') - Decimal('0.3'))
+print(Decimal('0.1') + Decimal('0.10') + Decimal('0.10') - Decimal('0.3'))
+print(Decimal(0.1) + Decimal(0.10) + Decimal(0.10) - Decimal(0.3))
 
-suits = ['hearts', 'clubs', 'diamonds', 'spades']
-random.shuffle(suits)
-print(suits)
+
+# Глобальная установка точности десятичных чисел
+print(decimal.Decimal(1) / decimal.Decimal(7))          # По умолчанию: 28 цифр
+decimal.getcontext().prec = 4                           # Фиксированная точность
+print(decimal.Decimal(1) / decimal.Decimal(7))
+print(Decimal(0.1) + Decimal(0.1) + Decimal(0.1) - Decimal(0.3))        # Ближе к 0
+
+decimal.getcontext().prec = 2
+pay = decimal.Decimal(str(1999 + 1.33))
+print(pay)
+
+
+# Диспетчер контекста для десятичных чисел
+print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
