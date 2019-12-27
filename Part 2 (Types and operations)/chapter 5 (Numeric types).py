@@ -1,7 +1,8 @@
 # import math
 # import random
-from decimal import Decimal
-import decimal
+# from decimal import Decimal
+# import decimal
+from fractions import Fraction
 
 # Разнородные типы преобразуются
 # print(3.14 + 40)                # Преобразование целого в число с плавающей точкой
@@ -173,23 +174,63 @@ import decimal
 
 # Другие числовые типы
 # Основы десятичных чисел
-print(0.1 + 0.1 + 0.1 - 0.3)
+# print(0.1 + 0.1 + 0.1 - 0.3)
+#
+# print(Decimal('0.1') + Decimal('0.1') + Decimal('0.1') - Decimal('0.3'))
+# print(Decimal('0.1') + Decimal('0.10') + Decimal('0.10') - Decimal('0.3'))
+# print(Decimal(0.1) + Decimal(0.10) + Decimal(0.10) - Decimal(0.3))
+#
+#
+# # Глобальная установка точности десятичных чисел
+# print(decimal.Decimal(1) / decimal.Decimal(7))          # По умолчанию: 28 цифр
+# decimal.getcontext().prec = 4                           # Фиксированная точность
+# print(decimal.Decimal(1) / decimal.Decimal(7))
+# print(Decimal(0.1) + Decimal(0.1) + Decimal(0.1) - Decimal(0.3))        # Ближе к 0
+#
+# decimal.getcontext().prec = 2
+# pay = decimal.Decimal(str(1999 + 1.33))
+# print(pay)
+#
+#
+# # Диспетчер контекста для десятичных чисел
+# print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
 
-print(Decimal('0.1') + Decimal('0.1') + Decimal('0.1') - Decimal('0.3'))
-print(Decimal('0.1') + Decimal('0.10') + Decimal('0.10') - Decimal('0.3'))
-print(Decimal(0.1) + Decimal(0.10) + Decimal(0.10) - Decimal(0.3))
+
+# Дробный тип
+# Основы дробей
+x = Fraction(1, 3)              # Числитель, знаменатель
+y = Fraction(4, 6)              # Упрощается до 2, 3 по наибольшему общему делителю
+print(x)
+print(y)
+print(x + y)                    # Результаты точны: числитель, знаменатель
+print(x - y)
+print(x * y)
+
+print(Fraction('.25'))
+print(Fraction('1.25'))
+print(Fraction('.25') + Fraction('1.25'))
 
 
-# Глобальная установка точности десятичных чисел
-print(decimal.Decimal(1) / decimal.Decimal(7))          # По умолчанию: 28 цифр
-decimal.getcontext().prec = 4                           # Фиксированная точность
-print(decimal.Decimal(1) / decimal.Decimal(7))
-print(Decimal(0.1) + Decimal(0.1) + Decimal(0.1) - Decimal(0.3))        # Ближе к 0
+# Числовая точность дробных и десятичных типов
+a = 1 / 3.0             # Результат точен лишь настолько, насколько позволяют аппаратные средства
+b = 4 / 6.0             # Точность может теряться из-за множества вычислений
+print(a)
+print(b)
+print(a + b)
+print(a - b)
+print(a * b)
 
-decimal.getcontext().prec = 2
-pay = decimal.Decimal(str(1999 + 1.33))
-print(pay)
 
-
-# Диспетчер контекста для десятичных чисел
-print(decimal.Decimal('1.00') / decimal.Decimal('3.00'))
+# Преобразование дробей и разнородные типы
+print((2.5).as_integer_ratio())             # Метод объекта с плавающей точкой
+f = 2.5
+z = Fraction(*f.as_integer_ratio())         # Превращает объект с плавающей точкой в дробь: два аргумента
+print(z)                                    # То же, что и Fraction(5, 2)
+print(x)
+print(x + z)
+print(float(x))
+print(float(z))
+print(float(x + z))
+print(17 / 6)
+print(Fraction.from_float(1.75))            # Преобразует объект с плавающей точкой в дробь
+print(Fraction(*(1.75).as_integer_ratio()))
