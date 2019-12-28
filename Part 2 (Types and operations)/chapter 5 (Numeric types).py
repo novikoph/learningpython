@@ -198,39 +198,45 @@ from fractions import Fraction
 
 # Дробный тип
 # Основы дробей
-x = Fraction(1, 3)              # Числитель, знаменатель
-y = Fraction(4, 6)              # Упрощается до 2, 3 по наибольшему общему делителю
-print(x)
-print(y)
-print(x + y)                    # Результаты точны: числитель, знаменатель
-print(x - y)
-print(x * y)
+# x = Fraction(1, 3)              # Числитель, знаменатель
+# y = Fraction(4, 6)              # Упрощается до 2, 3 по наибольшему общему делителю
+# print(x)
+# print(y)
+# print(x + y)                    # Результаты точны: числитель, знаменатель
+# print(x - y)
+# print(x * y)
+#
+# print(Fraction('.25'))
+# print(Fraction('1.25'))
+# print(Fraction('.25') + Fraction('1.25'))
+#
+#
+# # Числовая точность дробных и десятичных типов
+# a = 1 / 3.0             # Результат точен лишь настолько, насколько позволяют аппаратные средства
+# b = 4 / 6.0             # Точность может теряться из-за множества вычислений
+# print(a)
+# print(b)
+# print(a + b)
+# print(a - b)
+# print(a * b)
+#
+#
+# # Преобразование дробей и разнородные типы
+# print((2.5).as_integer_ratio())             # Метод объекта с плавающей точкой
+# f = 2.5
+# z = Fraction(*f.as_integer_ratio())         # Превращает объект с плавающей точкой в дробь: два аргумента
+# print(z)                                    # То же, что и Fraction(5, 2)
+# print(x)
+# print(x + z)
+# print(float(x))
+# print(float(z))
+# print(float(x + z))
+# print(17 / 6)
+# print(Fraction.from_float(1.75))            # Преобразует объект с плавающей точкой в дробь
+# print(Fraction(*(1.75).as_integer_ratio()))
 
-print(Fraction('.25'))
-print(Fraction('1.25'))
-print(Fraction('.25') + Fraction('1.25'))
 
-
-# Числовая точность дробных и десятичных типов
-a = 1 / 3.0             # Результат точен лишь настолько, насколько позволяют аппаратные средства
-b = 4 / 6.0             # Точность может теряться из-за множества вычислений
-print(a)
-print(b)
-print(a + b)
-print(a - b)
-print(a * b)
-
-
-# Преобразование дробей и разнородные типы
-print((2.5).as_integer_ratio())             # Метод объекта с плавающей точкой
-f = 2.5
-z = Fraction(*f.as_integer_ratio())         # Превращает объект с плавающей точкой в дробь: два аргумента
-print(z)                                    # То же, что и Fraction(5, 2)
-print(x)
-print(x + z)
-print(float(x))
-print(float(z))
-print(float(x + z))
-print(17 / 6)
-print(Fraction.from_float(1.75))            # Преобразует объект с плавающей точкой в дробь
-print(Fraction(*(1.75).as_integer_ratio()))
+# Множества
+# Литералы множеств в Python 3.X и 2.7
+set([1, 2, 3, 4])               # Вызов встроенной функции
+{1, 2, 3, 4}                    # Более новые литералы множеств (2.7, 3.Х)
