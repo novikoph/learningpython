@@ -290,35 +290,43 @@ from fractions import Fraction
 
 
 # Для чего используются множества
-L = [1, 2, 1, 4, 5, 3, 2]
-print(set(L))
-L = list(set(L))                # Удаление дубликатов (преобразование списка к множеству и далее множество к списку)
-print(L)
+# L = [1, 2, 1, 4, 5, 3, 2]
+# print(set(L))
+# L = list(set(L))                # Удаление дубликатов (преобразование списка к множеству и далее множество к списку)
+# print(L)
+#
+# print(list(set(['aa', 'cc', 'ff', 'xx', 'aa', 'cc'])))      # Порядок элементов может изменяться
+#
+# print(set([1, 3, 5, 7]) - set([1, 2, 4, 5, 6]))             # Найти различия в списках
+# print(set('abcdefg') - set('abcdghij'))                     # Найти различия в строках
+# print(set('spam') - set(['h', 'a', 'm']))                   # Найти различия, разнородные типы
+# print(set(dir(bytes)) - set(dir(bytearray)))                # В bytes, но не в bytearray
+# print(set(dir(bytearray)) - set(dir(bytes)))
+#
+# L1, L2 = [1, 2, 3, 4, 5], [2, 1, 4, 3, 5]
+# print(L1 == L2)                                 # В последовательностях порядок имеет значение
+# print(set(L1) == set(L2))                       # Проверка на равенство, нейтральное к порядку
+# print(sorted(L1) == sorted(L2))                 # Результаты списка упорядочены
+# print('spam' == 'aspm', set('spam') == set('aspm'), sorted('spam') == sorted('aspm'))
+#
+# engineers = {'bob', 'sue', 'ann', 'vic'}
+# managers = {'tom', 'sue'}
+# print('bob' in engineers)                       # Является ли bob инженером
+# print(engineers & managers)                     # Кто одновременно инженер и менеджер
+# print(engineers | managers)                     # Все собтрудники в обеих категориях
+# print(engineers - managers)                     # Инженеры, не являющиеся менеджерами
+# print(managers - engineers)                     # Менеджеры, не являющиеся инженерами
+# print(engineers > managers)                     # Все ли менеджеры - инженеры? (надмножество)
+# print({'bob', 'sue'} < engineers)               # Оба ли сотрудника - инженеры? (подмножество)
+# print((engineers | managers) > managers)        # Все сотрудники - надмножество менеджеров?
+# print(managers ^ engineers)                     # Кто находится в одной категории, но не в обеих?
+# print((managers | engineers) - (managers ^ engineers))  # Пересечение!
 
-print(list(set(['aa', 'cc', 'ff', 'xx', 'aa', 'cc'])))      # Порядок элементов может изменяться
 
-print(set([1, 3, 5, 7]) - set([1, 2, 4, 5, 6]))             # Найти различия в списках
-print(set('abcdefg') - set('abcdghij'))                     # Найти различия в строках
-print(set('spam') - set(['h', 'a', 'm']))                   # Найти различия, разнородные типы
-print(set(dir(bytes)) - set(dir(bytearray)))                # В bytes, но не в bytearray
-print(set(dir(bytearray)) - set(dir(bytes)))
-
-L1, L2 = [1, 2, 3, 4, 5], [2, 1, 4, 3, 5]
-print(L1 == L2)                                 # В последовательностях порядок имеет значение
-print(set(L1) == set(L2))                       # Проверка на равенство, нейтральное к порядку
-print(sorted(L1) == sorted(L2))                 # Результаты списка упорядочены
-print('spam' == 'aspm', set('spam') == set('aspm'), sorted('spam') == sorted('aspm'))
-
-engineers = {'bob', 'sue', 'ann', 'vic'}
-managers = {'tom', 'sue'}
-print('bob' in engineers)                       # Является ли bob инженером
-print(engineers & managers)                     # Кто одновременно инженер и менеджер
-print(engineers | managers)                     # Все собтрудники в обеих категориях
-print(engineers - managers)                     # Инженеры, не являющиеся менеджерами
-print(managers - engineers)                     # Менеджеры, не являющиеся инженерами
-print(engineers > managers)                     # Все ли менеджеры - инженеры? (надмножество)
-print({'bob', 'sue'} < engineers)               # Оба ли сотрудника - инженеры? (подмножество)
-print((engineers | managers) > managers)        # Все сотрудники - надмножество менеджеров?
-print(managers ^ engineers)                     # Кто находится в одной категории, но не в обеих?
-print((managers | engineers) - (managers ^ engineers))  # Пересечение!
-
+# Булевские значения
+print(type(True))
+print(isinstance(True, int))
+print(True == 1)
+print(True is 1)
+print(True or False)
+print(True + 4)
