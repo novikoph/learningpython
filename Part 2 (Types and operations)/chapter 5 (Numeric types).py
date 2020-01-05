@@ -324,9 +324,9 @@ from fractions import Fraction
 
 
 # Булевские значения
-print(type(True))
-print(isinstance(True, int))
-print(True == 1)
-print(True is 1)
-print(True or False)
-print(True + 4)
+# print(type(True))
+# print(isinstance(True, int))
+# print(True == 1)
+# print(True is 1)
+# print(True or False)
+# print(True + 4)
